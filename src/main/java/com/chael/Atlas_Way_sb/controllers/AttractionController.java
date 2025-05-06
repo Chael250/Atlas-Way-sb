@@ -12,7 +12,6 @@ import java.util.List;
 public class AttractionController {
     private final AttractionRepository attractionRepository;
     private final AttractionService attractionService;
-
     public AttractionController(AttractionRepository attractionRepository, AttractionService attractionService) {
         this.attractionRepository = attractionRepository;
         this.attractionService = attractionService;
