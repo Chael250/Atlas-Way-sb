@@ -3,6 +3,8 @@ package com.chael.Atlas_Way_sb.controllers;
 import com.chael.Atlas_Way_sb.dtos.UserDto;
 import com.chael.Atlas_Way_sb.entities.User;
 import com.chael.Atlas_Way_sb.services.UserService;
+import com.chael.Atlas_Way_sb.util.Constants;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,5 +54,16 @@ public class UserController {
         User oldUser = userService.findById(id);
         userService.update(id, userdto);
         return oldUser;
+    }
+
+    @GetMapping("/pageTourist/{id}")
+    public Page<User> getTouristPage(
+            @RequestParam(value = "page", defaultValue = Constants.DEFAULT_PAGE_NUMBER) int page,
+            @RequestParam(value = "size", defaultValue = Constants.DEFAULT_PAGE_SIZE) int size,
+            @RequestParam(value = "column", defaultValue = "username") String column,
+            @RequestParam(value = "direction", defaultValue = "asc") String direction,
+            @PathVariable Long id
+    ){
+        return userService.findPageTourist(page, size, column, direction, id);
     }
 }
