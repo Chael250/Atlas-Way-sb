@@ -1,5 +1,6 @@
 package com.chael.Atlas_Way_sb.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,5 +24,6 @@ public class Attraction extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "owner_id")
+    @JsonBackReference
     private User owner;
 }

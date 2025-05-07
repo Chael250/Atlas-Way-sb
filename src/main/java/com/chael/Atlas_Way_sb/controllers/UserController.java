@@ -1,5 +1,6 @@
 package com.chael.Atlas_Way_sb.controllers;
 
+import com.chael.Atlas_Way_sb.dtos.UserDto;
 import com.chael.Atlas_Way_sb.entities.User;
 import com.chael.Atlas_Way_sb.services.UserService;
 import org.springframework.http.HttpStatus;
@@ -30,8 +31,8 @@ public class UserController {
     }
 
     @PostMapping()
-    public User addUser(@RequestBody User user){
-        return userService.save(user);
+    public User addUser(@RequestBody UserDto userdto){
+        return userService.save(userdto);
     }
 
     @DeleteMapping("/{id}")
@@ -43,13 +44,13 @@ public class UserController {
         return user;
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public User updateUser(
-            @RequestBody User user
+            @RequestBody UserDto userdto
             ,@PathVariable Long id
     ){
         User oldUser = userService.findById(id);
-        userService.update(id, user);
+        userService.update(id, userdto);
         return oldUser;
     }
 }

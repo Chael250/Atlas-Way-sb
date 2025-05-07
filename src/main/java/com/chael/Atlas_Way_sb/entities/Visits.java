@@ -1,6 +1,7 @@
 package com.chael.Atlas_Way_sb.entities;
 
 import com.chael.Atlas_Way_sb.entities.enums.Rating;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,9 +26,11 @@ public class Visits extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonManagedReference
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "attraction_id")
+    @JsonManagedReference
     private Attraction attraction;
 }

@@ -1,6 +1,7 @@
 package com.chael.Atlas_Way_sb.entities;
 
 import com.chael.Atlas_Way_sb.entities.embedded.Names;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,10 +32,12 @@ public class User extends BaseEntity {
     @OneToMany(
             mappedBy = "user"
     )
+    @JsonManagedReference
     private List<Visits> visits;
 
     @OneToMany(
             mappedBy = "owner"
     )
+    @JsonManagedReference
     private List<Attraction> attractions;
 }
