@@ -8,19 +8,24 @@ import com.chael.Atlas_Way_sb.repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
     private final UserRepository userRepository;
     private final UserDtoToUser dtoToUser;
+    private final VisitService visitService;
 
-    public UserService(UserRepository userRepository, UserDtoToUser dtoToUser) {
+    public UserService(UserRepository userRepository, UserDtoToUser dtoToUser, VisitService visitService) {
         this.userRepository = userRepository;
         this.dtoToUser = dtoToUser;
+        this.visitService = visitService;
     }
 
     public List<User> findAll() {
@@ -51,5 +56,11 @@ public class UserService {
     }
 
     public Page<User> findPageTourist(int page, int size, String column, String direction, Long id) {
+        Sort sort = direction.equalsIgnoreCase("desc") ?
+                Sort.by(column).descending() :
+                Sort.by(column).ascending();
+        Pageable pageable = PageRequest.of(page, size, sort);
+
+        return userRepository.findAllUserByAttraction(id, pageable);
     }
 }

@@ -25,6 +25,10 @@ public class VisitService {
         return visitRepository.findAllByOwner(ownerId);
     }
 
+    public List<Visits> findAllByTourist(Long touristId) {
+        return visitRepository.findAllByOwner(touristId);
+    }
+
     public Visits findByIdAndOwner(Long id) {
         return visitRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Visit not found with id " + id));
     }

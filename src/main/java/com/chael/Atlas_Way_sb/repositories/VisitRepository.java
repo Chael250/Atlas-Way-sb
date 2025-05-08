@@ -1,5 +1,6 @@
 package com.chael.Atlas_Way_sb.repositories;
 
+import com.chael.Atlas_Way_sb.entities.Attraction;
 import com.chael.Atlas_Way_sb.entities.Visits;
 import com.chael.Atlas_Way_sb.entities.enums.Rating;
 import org.springframework.data.jpa.repository.JpaRepository;
