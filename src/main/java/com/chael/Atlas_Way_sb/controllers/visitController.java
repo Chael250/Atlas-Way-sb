@@ -28,10 +28,10 @@ public class visitController {
         return visitService.findByIdAndOwner(id);
     }
 
-    @PostMapping("/{id}/{attraction}")
+    @PostMapping("")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Visits createVisit(@PathVariable("id") Long user,@PathVariable("attraction") Long attraction, @RequestBody Visits visit){
-        return visitService.createByOwner(visit, user, attraction);
+    public Visits createVisit(@RequestBody Visits visit){
+        return visitService.createByOwner(visit);
     }
 
     @DeleteMapping("/{id}/{visitId}")

@@ -4,9 +4,6 @@ import com.chael.Atlas_Way_sb.dtos.AttractionDto;
 import com.chael.Atlas_Way_sb.entities.Attraction;
 import com.chael.Atlas_Way_sb.mappers.AttractionDtoToAttraction;
 import com.chael.Atlas_Way_sb.repositories.AttractionRepository;
-import com.chael.Atlas_Way_sb.repositories.UserRepository;
-import com.chael.Atlas_Way_sb.util.Constants;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,12 +17,10 @@ import java.util.Optional;
 public class AttractionService {
     private final AttractionRepository attractionRepository;
     private final AttractionDtoToAttraction attractionDtoToAttraction;
-    private final UserRepository userRepository;
 
-    public AttractionService(AttractionRepository attractionRepository, AttractionDtoToAttraction attractionDtoToAttraction, UserRepository userRepository) {
+    public AttractionService(AttractionRepository attractionRepository, AttractionDtoToAttraction attractionDtoToAttraction) {
         this.attractionRepository = attractionRepository;
         this.attractionDtoToAttraction = attractionDtoToAttraction;
-        this.userRepository = userRepository;
     }
     public List<Attraction> findAll() {
         return attractionRepository.findAll();

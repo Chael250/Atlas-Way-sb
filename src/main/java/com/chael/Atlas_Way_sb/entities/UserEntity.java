@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import com.chael.Atlas_Way_sb.entities.enums.UserType;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
@@ -15,9 +16,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "USER_TB")
-public class User extends BaseEntity {
+@SuperBuilder
+@MappedSuperclass
+public class UserEntity extends BaseEntity {
     private String username;
 
     private String password;
@@ -28,16 +29,4 @@ public class User extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private UserType userType;
-
-    @OneToMany(
-            mappedBy = "user"
-    )
-    @JsonManagedReference
-    private List<Visits> visits;
-
-    @OneToMany(
-            mappedBy = "owner"
-    )
-    @JsonManagedReference
-    private List<Attraction> attractions;
 }

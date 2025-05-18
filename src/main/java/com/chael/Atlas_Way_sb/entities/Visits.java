@@ -27,7 +27,7 @@ public class Visits extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonManagedReference
-    private User user;
+    private Tourist user;
 
     @ManyToOne
     @JoinColumn(name = "attraction_id")

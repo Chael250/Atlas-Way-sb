@@ -13,6 +13,12 @@ public interface VisitRepository extends JpaRepository<Visits, Long> {
     @Query("SELECT v FROM Visits v where v.user = :id")
     public List<Visits> findAllByOwner(Long id);
 
+    @Query("SELECT v FROM Visits v where v.attraction = :id")
+    public List<Visits> findAllByAttraction(Long id);
+
+    @Query("SELECT v FROM Visits v WHERE v.user = :userId")
+    public List<Visits> findAllByUser(Long userId);
+
     @Query("DELETE FROM Visits v WHERE v.user = :id")
     public void deleteByOwner(Long id);
 

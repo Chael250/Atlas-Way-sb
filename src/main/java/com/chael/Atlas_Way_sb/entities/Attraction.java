@@ -25,5 +25,5 @@ public class Attraction extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "owner_id")
     @JsonBackReference
-    private User owner;
+    private Owner owner;
 }

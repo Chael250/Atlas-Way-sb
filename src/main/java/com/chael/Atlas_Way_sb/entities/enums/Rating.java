@@ -4,5 +4,5 @@ public enum Rating {
     BAD,
     FAIR,
     GOOD,
-    VERY_GOOD,
+    VERY_GOOD
 }

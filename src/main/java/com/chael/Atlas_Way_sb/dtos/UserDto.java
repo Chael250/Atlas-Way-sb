@@ -7,7 +7,6 @@ public record UserDto(
         String password,
         String email,
         String firstname,
-        String lastname,
-        UserType type
+        String lastname
 ) {
 }
